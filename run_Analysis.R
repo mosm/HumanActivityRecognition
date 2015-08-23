@@ -35,7 +35,7 @@ activity_label=read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactor
 # Set column names for descriptive activity names. 
 colnames(activity_label) <-  c("activity_number", "activity_description")
 # Retrieve column names
-cols <- colnames[res]
+cols <- colnames(res)
 # Determine which variable names end in std() or mean()
 matches <- grep("mean\\(\\)|std\\(\\)", cols)
 # Store solumn names for matches in varsToRetain
@@ -44,7 +44,7 @@ varsToRetain <- cols[matches]###
 selection <- res[,c("activity_number", "person", varsToRetain)]
 
 # Improve on variable naming. First get current column names
-cols <- colnames[selection]
+cols <- colnames(selection)
 # Replace "Gyro" with full text "Gyroscope"
 cols <- gsub("Gyro", "Gyroscope", cols)
 # Replace "Acc" with full text "Acceleration"
